@@ -17,4 +17,8 @@ logging.basicConfig(
 )
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     logging.info("Logging Started")
+=======
+    logging.info("Logging Started")
+>>>>>>> 010adef (Updated Logging.py)
