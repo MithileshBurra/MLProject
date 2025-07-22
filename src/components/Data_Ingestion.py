@@ -11,6 +11,9 @@ from dataclasses import dataclass
 from src.components.Data_Transformation import DataTransformation
 from src.components.Data_Transformation import DataTransformationConfig
 
+from src.components.Model_Trainer import ModelTrainerConfig
+from src.components.Model_Trainer import ModelTrainer
+
 @dataclass
 class DataIngestionConfig:
     train_data_path: str = os.path.join("artifacts", "train.csv")
@@ -45,7 +48,7 @@ class DataIngestion:
             )
 
         except Exception as e:
-            raise CustomException(e, sys)
+            raise CustomException(e,sys)
 
 if __name__ == "__main__":
     obj=DataIngestion()
@@ -53,3 +56,7 @@ if __name__ == "__main__":
 
     data_transformation=DataTransformation()
     train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
+
+    modeltrainer=ModelTrainer()
+    r2 = modeltrainer.initiate_Model_Trainer(train_arr,test_arr)
+    print(r2)
